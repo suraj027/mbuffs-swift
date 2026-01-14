@@ -1,0 +1,24 @@
+{
+  "source": "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Features/TVShows/Views/TVShowsHomeView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "TV Shows",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "Popular Series",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 27
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,33 @@
+//
+//  TVShow.swift
+//  mbuffs
+//
+//  Created by AI Assistant on 14/01/26.
+//
+
+import Foundation
+
+struct TVShow: Identifiable, Decodable, Hashable {
+    let id: Int
+    let name: String
+    let overview: String
+    let posterPath: String?
+    let backdropPath: String?
+    let voteAverage: Double
+    let firstAirDate: String?
+
+    var posterURL: URL? {
+        guard let path = posterPath else { return nil }
+        return URL(string: "https://image.tmdb.org/t/p/w500\(path)")
+    }
+
+    var backdropURL: URL? {
+        guard let path = backdropPath else { return nil }
+        return URL(string: "https://image.tmdb.org/t/p/original\(path)")
+    }
+}
+
+// For List decoding
+struct TVShowResponse: Decodable {
+    let results: [TVShow]
+}

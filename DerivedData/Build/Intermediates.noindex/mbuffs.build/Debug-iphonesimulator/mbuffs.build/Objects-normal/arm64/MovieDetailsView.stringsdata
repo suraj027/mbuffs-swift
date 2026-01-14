@@ -1,0 +1,64 @@
+{
+  "source": "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Features/Movies/Views/MovieDetailsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "•",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 50
+        }
+      },
+      {
+        "comment": "",
+        "key": "•",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "Action, Sci-Fi",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "Watch Now",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "Storyline",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 100
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cast",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 111
+        }
+      },
+      {
+        "comment": "",
+        "key": "Actor Name",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 121
+        }
+      }
+    ]
+  },
+  "version": 1
+}

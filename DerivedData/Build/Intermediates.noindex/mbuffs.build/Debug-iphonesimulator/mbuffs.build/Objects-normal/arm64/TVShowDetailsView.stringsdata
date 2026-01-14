@@ -1,0 +1,64 @@
+{
+  "source": "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Features/TVShows/Views/TVShowDetailsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "•",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 50
+        }
+      },
+      {
+        "comment": "",
+        "key": "•",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "Drama, Thriller",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "Watch S1 E1",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "Storyline",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 92
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cast",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 103
+        }
+      },
+      {
+        "comment": "",
+        "key": "Actor Name",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 113
+        }
+      }
+    ]
+  },
+  "version": 1
+}

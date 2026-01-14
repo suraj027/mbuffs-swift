@@ -1,0 +1,159 @@
+{
+  "" : {
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/mbuffs-primary.dia",
+    "emit-module-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/mbuffs-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/mbuffs-primary-emit-module.dia",
+    "pch" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/mbuffs-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/mbuffs-primary.swiftdeps"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Core/Models/Movie.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Movie.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Movie.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Movie.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Movie.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Movie.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Movie.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Movie.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Movie~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Core/Models/TVShow.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShow.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShow.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShow.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShow.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShow.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShow.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShow.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShow~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Core/Networking/APIClient.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/APIClient.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/APIClient.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/APIClient.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/APIClient.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/APIClient.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/APIClient.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/APIClient.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/APIClient~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Core/Networking/Endpoint.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Endpoint.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Endpoint.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Endpoint.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Endpoint.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Endpoint.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Endpoint.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Endpoint.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/Endpoint~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Features/Movies/ViewModels/MoviesViewModel.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesViewModel.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesViewModel.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesViewModel.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesViewModel.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesViewModel.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesViewModel.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesViewModel.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesViewModel~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Features/Movies/Views/MovieDetailsView.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MovieDetailsView.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MovieDetailsView.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MovieDetailsView.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MovieDetailsView.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MovieDetailsView.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MovieDetailsView.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MovieDetailsView.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MovieDetailsView~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Features/Movies/Views/MoviesHomeView.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesHomeView.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesHomeView.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesHomeView.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesHomeView.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesHomeView.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesHomeView.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesHomeView.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MoviesHomeView~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Features/Shared/Components/OffsetAsyncImage.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/OffsetAsyncImage.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/OffsetAsyncImage.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/OffsetAsyncImage.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/OffsetAsyncImage.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/OffsetAsyncImage.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/OffsetAsyncImage.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/OffsetAsyncImage.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/OffsetAsyncImage~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Features/Shared/Views/MainTabView.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MainTabView.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MainTabView.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MainTabView.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MainTabView.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MainTabView.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MainTabView.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MainTabView.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/MainTabView~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Features/TVShows/ViewModels/TVShowsViewModel.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsViewModel.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsViewModel.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsViewModel.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsViewModel.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsViewModel.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsViewModel.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsViewModel.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsViewModel~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Features/TVShows/Views/TVShowDetailsView.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowDetailsView.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowDetailsView.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowDetailsView.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowDetailsView.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowDetailsView.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowDetailsView.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowDetailsView.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowDetailsView~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/Features/TVShows/Views/TVShowsHomeView.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsHomeView.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsHomeView.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsHomeView.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsHomeView.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsHomeView.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsHomeView.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsHomeView.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/TVShowsHomeView~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/mbuffs/ContentView.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/mbuffs/mbuffsApp.swift" : {
+    "const-values" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/mbuffsApp.swiftconstvalues",
+    "dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/mbuffsApp.d",
+    "diagnostics" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/mbuffsApp.dia",
+    "index-unit-output-path" : "/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/mbuffsApp.o",
+    "llvm-bc" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/mbuffsApp.bc",
+    "object" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/mbuffsApp.o",
+    "swift-dependencies" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/mbuffsApp.swiftdeps",
+    "swiftmodule" : "/Users/surajsatheesh/Developer/mbuffs/mbuffs swift/mbuffs/DerivedData/Build/Intermediates.noindex/mbuffs.build/Debug-iphonesimulator/mbuffs.build/Objects-normal/arm64/mbuffsApp~partial.swiftmodule"
+  }
+}

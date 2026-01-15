@@ -85,11 +85,17 @@ struct TVShowsHomeView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
-                    ForEach(viewModel.currentlyStreaming) { show in
-                        NavigationLink(destination: TVShowDetailsView(show: show)) {
-                            LargeTVPosterCard(show: show)
+                    if viewModel.currentlyStreaming.isEmpty {
+                        ForEach(0..<3, id: \.self) { _ in
+                            SkeletonLargePosterCard()
                         }
-                        .buttonStyle(.plain)
+                    } else {
+                        ForEach(viewModel.currentlyStreaming) { show in
+                            NavigationLink(destination: TVShowDetailsView(show: show)) {
+                                LargeTVPosterCard(show: show)
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -107,11 +113,17 @@ struct TVShowsHomeView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
-                    ForEach(viewModel.airingToday) { show in
-                        NavigationLink(destination: TVShowDetailsView(show: show)) {
-                            MediumTVPosterCard(show: show)
+                    if viewModel.airingToday.isEmpty {
+                        ForEach(0..<5, id: \.self) { _ in
+                            SkeletonMediumPosterCard()
                         }
-                        .buttonStyle(.plain)
+                    } else {
+                        ForEach(viewModel.airingToday) { show in
+                            NavigationLink(destination: TVShowDetailsView(show: show)) {
+                                MediumTVPosterCard(show: show)
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -129,11 +141,17 @@ struct TVShowsHomeView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
-                    ForEach(viewModel.popularShows) { show in
-                        NavigationLink(destination: TVShowDetailsView(show: show)) {
-                            MediumTVPosterCard(show: show)
+                    if viewModel.popularShows.isEmpty {
+                        ForEach(0..<5, id: \.self) { _ in
+                            SkeletonMediumPosterCard()
                         }
-                        .buttonStyle(.plain)
+                    } else {
+                        ForEach(viewModel.popularShows) { show in
+                            NavigationLink(destination: TVShowDetailsView(show: show)) {
+                                MediumTVPosterCard(show: show)
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -151,11 +169,17 @@ struct TVShowsHomeView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
-                    ForEach(viewModel.comingSoon) { show in
-                        NavigationLink(destination: TVShowDetailsView(show: show)) {
-                            MediumTVPosterCard(show: show)
+                    if viewModel.comingSoon.isEmpty {
+                        ForEach(0..<5, id: \.self) { _ in
+                            SkeletonMediumPosterCard()
                         }
-                        .buttonStyle(.plain)
+                    } else {
+                        ForEach(viewModel.comingSoon) { show in
+                            NavigationLink(destination: TVShowDetailsView(show: show)) {
+                                MediumTVPosterCard(show: show)
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                 }
                 .padding(.horizontal)

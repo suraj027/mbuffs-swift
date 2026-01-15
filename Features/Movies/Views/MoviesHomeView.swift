@@ -14,23 +14,33 @@ struct MoviesHomeView: View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 28) {
-                    // Theatrical Releases Section
-                    theatricalReleasesSection
-                    
-                    // Currently Streaming Section
-                    currentlyStreamingSection
-                    
-                    // Coming Soon Section
-                    comingSoonSection
-                    
-                    // Explore Section
-                    exploreSection
-                    
-                    // Networks Section
-                    networksSection
-                    
-                    // Genres Section
-                    genresSection
+                    if viewModel.isLoading {
+                        // Skeleton Loading State
+                        SkeletonLargeCardsSection()
+                        SkeletonMediumCardsSection()
+                        SkeletonMediumCardsSection()
+                        SkeletonMediumCardsSection()
+                        SkeletonNetworksSection()
+                        SkeletonGenresSection()
+                    } else {
+                        // Theatrical Releases Section
+                        theatricalReleasesSection
+                        
+                        // Currently Streaming Section
+                        currentlyStreamingSection
+                        
+                        // Coming Soon Section
+                        comingSoonSection
+                        
+                        // Explore Section
+                        exploreSection
+                        
+                        // Networks Section
+                        networksSection
+                        
+                        // Genres Section
+                        genresSection
+                    }
                 }
                 .padding(.top, 8)
                 .padding(.bottom, 100) // Space for TabBar
@@ -75,11 +85,17 @@ struct MoviesHomeView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
-                    ForEach(viewModel.theatricalReleases) { movie in
-                        NavigationLink(destination: MovieDetailsView(movie: movie)) {
-                            LargePosterCard(movie: movie)
+                    if viewModel.theatricalReleases.isEmpty {
+                        ForEach(0..<3, id: \.self) { _ in
+                            SkeletonLargePosterCard()
                         }
-                        .buttonStyle(.plain)
+                    } else {
+                        ForEach(viewModel.theatricalReleases) { movie in
+                            NavigationLink(destination: MovieDetailsView(movie: movie)) {
+                                LargePosterCard(movie: movie)
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -97,11 +113,17 @@ struct MoviesHomeView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
-                    ForEach(viewModel.currentlyStreaming) { movie in
-                        NavigationLink(destination: MovieDetailsView(movie: movie)) {
-                            MediumPosterCard(movie: movie)
+                    if viewModel.currentlyStreaming.isEmpty {
+                        ForEach(0..<5, id: \.self) { _ in
+                            SkeletonMediumPosterCard()
                         }
-                        .buttonStyle(.plain)
+                    } else {
+                        ForEach(viewModel.currentlyStreaming) { movie in
+                            NavigationLink(destination: MovieDetailsView(movie: movie)) {
+                                MediumPosterCard(movie: movie)
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -119,11 +141,17 @@ struct MoviesHomeView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
-                    ForEach(viewModel.comingSoon) { movie in
-                        NavigationLink(destination: MovieDetailsView(movie: movie)) {
-                            MediumPosterCard(movie: movie)
+                    if viewModel.comingSoon.isEmpty {
+                        ForEach(0..<5, id: \.self) { _ in
+                            SkeletonMediumPosterCard()
                         }
-                        .buttonStyle(.plain)
+                    } else {
+                        ForEach(viewModel.comingSoon) { movie in
+                            NavigationLink(destination: MovieDetailsView(movie: movie)) {
+                                MediumPosterCard(movie: movie)
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -141,11 +169,17 @@ struct MoviesHomeView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
-                    ForEach(viewModel.explore) { movie in
-                        NavigationLink(destination: MovieDetailsView(movie: movie)) {
-                            MediumPosterCard(movie: movie)
+                    if viewModel.explore.isEmpty {
+                        ForEach(0..<5, id: \.self) { _ in
+                            SkeletonMediumPosterCard()
                         }
-                        .buttonStyle(.plain)
+                    } else {
+                        ForEach(viewModel.explore) { movie in
+                            NavigationLink(destination: MovieDetailsView(movie: movie)) {
+                                MediumPosterCard(movie: movie)
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -419,6 +453,45 @@ struct SectionHeader: View {
         }
         .buttonStyle(.plain)
         .padding(.horizontal)
+    }
+}
+
+// MARK: - Shimmer Modifier
+struct ShimmerModifier: ViewModifier {
+    @State private var phase: CGFloat = 0
+    
+    func body(content: Content) -> some View {
+        content
+            .overlay(
+                GeometryReader { geometry in
+                    LinearGradient(
+                        gradient: Gradient(colors: [
+                            Color.clear,
+                            Color.white.opacity(0.4),
+                            Color.clear
+                        ]),
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                    .frame(width: geometry.size.width * 2)
+                    .offset(x: -geometry.size.width + (geometry.size.width * 2 * phase))
+                }
+            )
+            .mask(content)
+            .onAppear {
+                withAnimation(
+                    .linear(duration: 1.5)
+                    .repeatForever(autoreverses: false)
+                ) {
+                    phase = 1
+                }
+            }
+    }
+}
+
+extension View {
+    func shimmer() -> some View {
+        modifier(ShimmerModifier())
     }
 }
 

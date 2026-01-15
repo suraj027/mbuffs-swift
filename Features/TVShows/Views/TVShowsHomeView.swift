@@ -14,23 +14,33 @@ struct TVShowsHomeView: View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 28) {
-                    // Currently Streaming Section (Large Cards)
-                    currentlyStreamingSection
-                    
-                    // Airing Today Section
-                    airingTodaySection
-                    
-                    // Popular Shows Section
-                    popularShowsSection
-                    
-                    // Coming Soon Section
-                    comingSoonSection
-                    
-                    // Networks Section
-                    networksSection
-                    
-                    // Genres Section
-                    genresSection
+                    if viewModel.isLoading {
+                        // Skeleton Loading State
+                        SkeletonLargeCardsSection()
+                        SkeletonMediumCardsSection()
+                        SkeletonMediumCardsSection()
+                        SkeletonMediumCardsSection()
+                        SkeletonNetworksSection()
+                        SkeletonGenresSection()
+                    } else {
+                        // Currently Streaming Section (Large Cards)
+                        currentlyStreamingSection
+                        
+                        // Airing Today Section
+                        airingTodaySection
+                        
+                        // Popular Shows Section
+                        popularShowsSection
+                        
+                        // Coming Soon Section
+                        comingSoonSection
+                        
+                        // Networks Section
+                        networksSection
+                        
+                        // Genres Section
+                        genresSection
+                    }
                 }
                 .padding(.top, 8)
                 .padding(.bottom, 100) // Space for TabBar
@@ -419,6 +429,237 @@ struct TVSectionHeader: View {
         }
         .buttonStyle(.plain)
         .padding(.horizontal)
+    }
+}
+
+// MARK: - Shimmer Modifier (TV)
+struct TVShimmerModifier: ViewModifier {
+    @State private var phase: CGFloat = 0
+    
+    func body(content: Content) -> some View {
+        content
+            .overlay(
+                GeometryReader { geometry in
+                    LinearGradient(
+                        gradient: Gradient(colors: [
+                            Color.clear,
+                            Color.white.opacity(0.4),
+                            Color.clear
+                        ]),
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                    .frame(width: geometry.size.width * 2)
+                    .offset(x: -geometry.size.width + (geometry.size.width * 2 * phase))
+                }
+            )
+            .mask(content)
+            .onAppear {
+                withAnimation(
+                    .linear(duration: 1.5)
+                    .repeatForever(autoreverses: false)
+                ) {
+                    phase = 1
+                }
+            }
+    }
+}
+
+extension View {
+    func tvShimmer() -> some View {
+        modifier(TVShimmerModifier())
+    }
+}
+
+// MARK: - Skeleton Poster Card (Large) - TV
+struct SkeletonLargePosterCard: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.gray.opacity(0.2))
+                .frame(width: 280, height: 420)
+                .overlay(
+                    Image(systemName: "tv")
+                        .font(.system(size: 40))
+                        .foregroundColor(.gray.opacity(0.4))
+                )
+                .tvShimmer()
+            
+            VStack(alignment: .leading, spacing: 6) {
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: 180, height: 16)
+                    .tvShimmer()
+                
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: 250, height: 12)
+                    .tvShimmer()
+            }
+            .frame(width: 280, alignment: .leading)
+        }
+    }
+}
+
+// MARK: - Skeleton Poster Card (Medium) - TV
+struct SkeletonMediumPosterCard: View {
+    var body: some View {
+        RoundedRectangle(cornerRadius: 12)
+            .fill(Color.gray.opacity(0.2))
+            .frame(width: 140, height: 210)
+            .overlay(
+                Image(systemName: "tv")
+                    .font(.system(size: 28))
+                    .foregroundColor(.gray.opacity(0.4))
+            )
+            .tvShimmer()
+    }
+}
+
+// MARK: - Skeleton Network Card - TV
+struct SkeletonNetworkCard: View {
+    var body: some View {
+        VStack(spacing: 8) {
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.gray.opacity(0.2))
+                .frame(width: 70, height: 70)
+                .tvShimmer()
+            
+            RoundedRectangle(cornerRadius: 4)
+                .fill(Color.gray.opacity(0.2))
+                .frame(width: 60, height: 10)
+                .tvShimmer()
+        }
+    }
+}
+
+// MARK: - Skeleton Genre Button - TV
+struct SkeletonGenreButton: View {
+    var body: some View {
+        RoundedRectangle(cornerRadius: 14)
+            .fill(Color.gray.opacity(0.15))
+            .frame(height: 48)
+            .tvShimmer()
+    }
+}
+
+// MARK: - Skeleton Section (Large Cards) - TV
+struct SkeletonLargeCardsSection: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 4) {
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: 180, height: 20)
+                    .tvShimmer()
+                
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: 220, height: 14)
+                    .tvShimmer()
+            }
+            .padding(.horizontal)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    ForEach(0..<3, id: \.self) { _ in
+                        SkeletonLargePosterCard()
+                    }
+                }
+                .padding(.horizontal)
+            }
+        }
+    }
+}
+
+// MARK: - Skeleton Section (Medium Cards) - TV
+struct SkeletonMediumCardsSection: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 4) {
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: 160, height: 20)
+                    .tvShimmer()
+                
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: 200, height: 14)
+                    .tvShimmer()
+            }
+            .padding(.horizontal)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 12) {
+                    ForEach(0..<5, id: \.self) { _ in
+                        SkeletonMediumPosterCard()
+                    }
+                }
+                .padding(.horizontal)
+            }
+        }
+    }
+}
+
+// MARK: - Skeleton Networks Section - TV
+struct SkeletonNetworksSection: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 4) {
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: 100, height: 20)
+                    .tvShimmer()
+                
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: 180, height: 14)
+                    .tvShimmer()
+            }
+            .padding(.horizontal)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    ForEach(0..<6, id: \.self) { _ in
+                        SkeletonNetworkCard()
+                    }
+                }
+                .padding(.horizontal)
+            }
+        }
+    }
+}
+
+// MARK: - Skeleton Genres Section - TV
+struct SkeletonGenresSection: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 4) {
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: 80, height: 20)
+                    .tvShimmer()
+                
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: 140, height: 14)
+                    .tvShimmer()
+            }
+            .padding(.horizontal)
+            
+            LazyVGrid(
+                columns: [
+                    GridItem(.flexible(), spacing: 12),
+                    GridItem(.flexible(), spacing: 12)
+                ],
+                spacing: 12
+            ) {
+                ForEach(0..<8, id: \.self) { _ in
+                    SkeletonGenreButton()
+                }
+            }
+            .padding(.horizontal)
+        }
     }
 }
 

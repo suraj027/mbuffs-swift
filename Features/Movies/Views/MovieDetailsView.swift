@@ -76,23 +76,21 @@ struct MovieDetailsView: View {
                             Label("Watch Now", systemImage: "play.fill")
                                 .frame(maxWidth: .infinity)
                         }
-                        .buttonStyle(.borderedProminent)
+                        .buttonStyle(.glassProminent)
                         
                         Button(action: {}) {
                             Image(systemName: "plus")
                                 .font(.title3)
                                 .frame(width: 50, height: 50)
                         }
-                        .buttonStyle(.bordered)
-                        .tint(.primary)
+                        .buttonStyle(.glass)
                         
                         Button(action: {}) {
                             Image(systemName: "square.and.arrow.up")
                                 .font(.title3)
                                 .frame(width: 50, height: 50)
                         }
-                        .buttonStyle(.bordered)
-                        .tint(.primary)
+                        .buttonStyle(.glass)
                     }
                     
                     // Storyline
@@ -138,9 +136,8 @@ struct MovieDetailsView: View {
                     Image(systemName: "chevron.left")
                         .font(.headline)
                         .foregroundColor(.white)
-                        .padding(8)
-                        .background(.ultraThinMaterial, in: Circle())
                 }
+                .buttonStyle(.glass)
             }
         }
     }

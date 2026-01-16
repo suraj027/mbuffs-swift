@@ -180,24 +180,33 @@ Caching:
 
 ---
 
-## 10. Liquid Glass UI System
+## 10. Liquid Glass UI System (iOS 26 SDK)
 
 ### Principles
 - Blur, not borders
-- Depth, not shadows
+- Depth, not shadows  
 - Motion, not decoration
+- Let system handle navigation layer appearance
+
+### iOS 26 APIs Used
+- `.safeAreaBar(edge:)` - System-managed headers with scroll edge effects
+- `.tabBarMinimizeBehavior(.onScrollDown)` - Receding tab bar on scroll
+- `.buttonStyle(.glass)` - Liquid Glass button style
+- `.buttonStyle(.glassProminent)` - Prominent glass button style
+- `Tab(role: .search)` - Semantic search tab placement
+
+### Best Practices
+- Use standard SwiftUI components (TabView, NavigationStack) for automatic Liquid Glass adoption
+- Avoid custom blur backgrounds on bars - let system handle it
+- Use glass button styles instead of custom material backgrounds
+- Don't overuse Liquid Glass effects on custom elements
+- Test with accessibility settings (reduce transparency, reduce motion)
 
 ### Components
-- GlassHeader
-- GlassTabBar
-- GlassCard
-- FloatingActionButton
-
-Implementation:
-- `Material.ultraThin`
-- `background(.regularMaterial)`
-- Dynamic opacity on scroll
-- Stretch effects for hero headers
+- System TabView with `.tabBarMinimizeBehavior`
+- safeAreaBar headers
+- Glass-styled action buttons
+- Standard NavigationStack
 
 ---
 

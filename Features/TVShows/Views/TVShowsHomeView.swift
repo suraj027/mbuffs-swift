@@ -31,10 +31,6 @@ struct TVShowsHomeView: View {
                 // Main scrollable content
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 28) {
-                        // Spacer for the header area
-                        Color.clear
-                            .frame(height: 50)
-                        
                         if viewModel.isLoading {
                             // Skeleton Loading State
                             SkeletonLargeCardsSection()
@@ -77,52 +73,15 @@ struct TVShowsHomeView: View {
                 .onPreferenceChange(TVScrollOffsetPreferenceKey.self) { value in
                     scrollOffset = value
                 }
-                
-                // Sticky header with progressive blur and animated title
-                VStack(spacing: 0) {
-                    HStack {
-                        Text("Shows")
-                            .font(isCollapsed ? .headline : .largeTitle)
-                            .fontWeight(.bold)
-                            .animation(.easeInOut(duration: 0.2), value: isCollapsed)
-                        
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    .padding(.top, 8)
-                    .padding(.bottom, 12)
+                .safeAreaBar(edge: .top) {
+                    Text("Shows")
+                        .font(isCollapsed ? .headline : .largeTitle)
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
+                        .animation(.easeInOut(duration: 0.2), value: isCollapsed)
                 }
-                .animation(.easeInOut(duration: 0.25), value: isCollapsed)
-                .background(
-                    // Progressive blur background extending to dynamic island
-                    ZStack {
-                        // Layer 1: Strong blur at top
-                        Rectangle()
-                            .fill(.ultraThinMaterial)
-                            .mask(
-                                LinearGradient(
-                                    colors: [.white, .white, .white.opacity(0)],
-                                    startPoint: .top,
-                                    endPoint: .bottom
-                                )
-                            )
-                        
-                        // Layer 2: Additional blur layer for depth
-                        Rectangle()
-                            .fill(.regularMaterial.opacity(0.6))
-                            .mask(
-                                LinearGradient(
-                                    colors: [.white, .white.opacity(0.5), .clear],
-                                    startPoint: .top,
-                                    endPoint: .bottom
-                                )
-                            )
-                    }
-                    .frame(height: 120)
-                    .ignoresSafeArea(edges: .top)
-                    , alignment: .top
-                )
-                .animation(.easeInOut(duration: 0.2), value: isCollapsed)
             }
             .navigationBarHidden(true)
             .task {

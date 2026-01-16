@@ -76,15 +76,14 @@ struct TVShowDetailsView: View {
                             Label("Watch S1 E1", systemImage: "play.fill")
                                 .frame(maxWidth: .infinity)
                         }
-                        .buttonStyle(.borderedProminent)
+                        .buttonStyle(.glassProminent)
                         
                         Button(action: {}) {
                             Image(systemName: "plus")
                                 .font(.title3)
                                 .frame(width: 50, height: 50)
                         }
-                        .buttonStyle(.bordered)
-                        .tint(.primary)
+                        .buttonStyle(.glass)
                     }
                     
                     // Storyline
@@ -130,9 +129,8 @@ struct TVShowDetailsView: View {
                     Image(systemName: "chevron.left")
                         .font(.headline)
                         .foregroundColor(.white)
-                        .padding(8)
-                        .background(.ultraThinMaterial, in: Circle())
                 }
+                .buttonStyle(.glass)
             }
         }
     }

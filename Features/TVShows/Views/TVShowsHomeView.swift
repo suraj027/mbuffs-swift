@@ -7,68 +7,124 @@
 
 import SwiftUI
 
+// MARK: - TV Scroll Offset Preference Key
+struct TVScrollOffsetPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
+}
+
 struct TVShowsHomeView: View {
     @StateObject private var viewModel = TVShowsViewModel()
+    @State private var scrollOffset: CGFloat = 0
+    
+    private let collapsedThreshold: CGFloat = 50
+    
+    private var isCollapsed: Bool {
+        scrollOffset > collapsedThreshold
+    }
     
     var body: some View {
         NavigationStack {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 28) {
-                    if viewModel.isLoading {
-                        // Skeleton Loading State
-                        SkeletonLargeCardsSection()
-                        SkeletonMediumCardsSection()
-                        SkeletonMediumCardsSection()
-                        SkeletonMediumCardsSection()
-                        SkeletonNetworksSection()
-                        SkeletonGenresSection()
-                    } else {
-                        // Currently Streaming Section (Large Cards)
-                        currentlyStreamingSection
+            ZStack(alignment: .top) {
+                // Main scrollable content
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(alignment: .leading, spacing: 28) {
+                        // Spacer for the header area
+                        Color.clear
+                            .frame(height: 50)
                         
-                        // Airing Today Section
-                        airingTodaySection
-                        
-                        // Popular Shows Section
-                        popularShowsSection
-                        
-                        // Coming Soon Section
-                        comingSoonSection
-                        
-                        // Networks Section
-                        networksSection
-                        
-                        // Genres Section
-                        genresSection
-                    }
-                }
-                .padding(.top, 8)
-                .padding(.bottom, 100) // Space for TabBar
-            }
-            .background(Color(uiColor: .systemBackground))
-            .navigationTitle("Shows")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    HStack(spacing: 12) {
-                        Button(action: { /* Shuffle action */ }) {
-                            Image(systemName: "shuffle")
-                                .font(.body.weight(.medium))
-                                .foregroundColor(.primary)
-                                .frame(width: 40, height: 40)
-                                .background(.ultraThinMaterial, in: Circle())
-                        }
-                        
-                        Button(action: { /* More options */ }) {
-                            Image(systemName: "ellipsis")
-                                .font(.body.weight(.medium))
-                                .foregroundColor(.primary)
-                                .frame(width: 40, height: 40)
-                                .background(.ultraThinMaterial, in: Circle())
+                        if viewModel.isLoading {
+                            // Skeleton Loading State
+                            SkeletonLargeCardsSection()
+                            SkeletonMediumCardsSection()
+                            SkeletonMediumCardsSection()
+                            SkeletonMediumCardsSection()
+                            SkeletonNetworksSection()
+                            SkeletonGenresSection()
+                        } else {
+                            // Currently Streaming Section (Large Cards)
+                            currentlyStreamingSection
+                            
+                            // Airing Today Section
+                            airingTodaySection
+                            
+                            // Popular Shows Section
+                            popularShowsSection
+                            
+                            // Coming Soon Section
+                            comingSoonSection
+                            
+                            // Networks Section
+                            networksSection
+                            
+                            // Genres Section
+                            genresSection
                         }
                     }
+                    .padding(.bottom, 100) // Space for TabBar
+                    .background(
+                        GeometryReader { geo in
+                            Color.clear.preference(
+                                key: TVScrollOffsetPreferenceKey.self,
+                                value: -geo.frame(in: .named("tvscroll")).origin.y
+                            )
+                        }
+                    )
                 }
+                .coordinateSpace(name: "tvscroll")
+                .onPreferenceChange(TVScrollOffsetPreferenceKey.self) { value in
+                    scrollOffset = value
+                }
+                
+                // Sticky header with progressive blur and animated title
+                VStack(spacing: 0) {
+                    HStack {
+                        Text("Shows")
+                            .font(isCollapsed ? .headline : .largeTitle)
+                            .fontWeight(.bold)
+                            .animation(.easeInOut(duration: 0.2), value: isCollapsed)
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, 8)
+                    .padding(.bottom, 12)
+                }
+                .animation(.easeInOut(duration: 0.25), value: isCollapsed)
+                .background(
+                    // Progressive blur background extending to dynamic island
+                    ZStack {
+                        // Layer 1: Strong blur at top
+                        Rectangle()
+                            .fill(.ultraThinMaterial)
+                            .mask(
+                                LinearGradient(
+                                    colors: [.white, .white, .white.opacity(0)],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
+                        
+                        // Layer 2: Additional blur layer for depth
+                        Rectangle()
+                            .fill(.regularMaterial.opacity(0.6))
+                            .mask(
+                                LinearGradient(
+                                    colors: [.white, .white.opacity(0.5), .clear],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
+                    }
+                    .frame(height: 120)
+                    .ignoresSafeArea(edges: .top)
+                    , alignment: .top
+                )
+                .animation(.easeInOut(duration: 0.2), value: isCollapsed)
             }
+            .navigationBarHidden(true)
             .task {
                 await viewModel.fetchAllData()
             }

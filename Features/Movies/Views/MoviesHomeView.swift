@@ -96,7 +96,9 @@ struct MoviesHomeView: View {
             SectionHeader(
                 title: "Theatrical Releases",
                 subtitle: "Discover the latest theatrical releases"
-            )
+            ) {
+                MovieGridView(title: "Theatrical Releases", movies: viewModel.theatricalReleases)
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
@@ -124,7 +126,9 @@ struct MoviesHomeView: View {
             SectionHeader(
                 title: "Currently Streaming",
                 subtitle: "Discover the latest home releases"
-            )
+            ) {
+                MovieGridView(title: "Currently Streaming", movies: viewModel.currentlyStreaming)
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
@@ -152,7 +156,9 @@ struct MoviesHomeView: View {
             SectionHeader(
                 title: "Coming Soon",
                 subtitle: "Anticipated movies"
-            )
+            ) {
+                MovieGridView(title: "Coming Soon", movies: viewModel.comingSoon)
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
@@ -180,7 +186,9 @@ struct MoviesHomeView: View {
             SectionHeader(
                 title: "Explore",
                 subtitle: "Your next watch"
-            )
+            ) {
+                MovieGridView(title: "Explore", movies: viewModel.explore)
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
@@ -205,7 +213,7 @@ struct MoviesHomeView: View {
     // MARK: - Networks
     private var networksSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            SectionHeader(
+            SimpleSectionHeader(
                 title: "Networks",
                 subtitle: "Available watch providers"
             )
@@ -224,7 +232,7 @@ struct MoviesHomeView: View {
     // MARK: - Genres
     private var genresSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            SectionHeader(
+            SimpleSectionHeader(
                 title: "Genres",
                 subtitle: "Movies by genre",
                 showChevron: false
@@ -434,39 +442,90 @@ struct GenreButton: View {
 }
 
 // MARK: - Section Header
-struct SectionHeader: View {
+struct SectionHeader<Destination: View>: View {
     let title: String
     let subtitle: String
     var showChevron: Bool = true
-    var action: (() -> Void)? = nil
+    var destination: (() -> Destination)?
+    
+    init(title: String, subtitle: String, showChevron: Bool = true, @ViewBuilder destination: @escaping () -> Destination) {
+        self.title = title
+        self.subtitle = subtitle
+        self.showChevron = showChevron
+        self.destination = destination
+    }
     
     var body: some View {
-        Button(action: { action?() }) {
-            HStack(alignment: .center) {
-                VStack(alignment: .leading, spacing: 2) {
-                    HStack(spacing: 6) {
-                        Text(title)
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.primary)
-                        
-                        if showChevron {
-                            Image(systemName: "chevron.right")
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    
-                    Text(subtitle)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+        Group {
+            if let destination = destination, showChevron {
+                NavigationLink(destination: destination()) {
+                    headerContent
                 }
-                
-                Spacer()
+                .buttonStyle(.plain)
+            } else {
+                headerContent
             }
         }
-        .buttonStyle(.plain)
+        .padding(.horizontal)
+    }
+    
+    private var headerContent: some View {
+        HStack(alignment: .center) {
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(spacing: 6) {
+                    Text(title)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                    
+                    if showChevron {
+                        Image(systemName: "chevron.right")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
+                Text(subtitle)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+        }
+    }
+}
+
+// MARK: - Non-navigating Section Header
+struct SimpleSectionHeader: View {
+    let title: String
+    let subtitle: String
+    var showChevron: Bool = false
+    
+    var body: some View {
+        HStack(alignment: .center) {
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(spacing: 6) {
+                    Text(title)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                    
+                    if showChevron {
+                        Image(systemName: "chevron.right")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
+                Text(subtitle)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+        }
         .padding(.horizontal)
     }
 }

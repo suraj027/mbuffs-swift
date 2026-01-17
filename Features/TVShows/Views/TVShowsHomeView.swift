@@ -96,7 +96,9 @@ struct TVShowsHomeView: View {
             TVSectionHeader(
                 title: "Currently Streaming",
                 subtitle: "Discover your next watch"
-            )
+            ) {
+                TVShowGridView(title: "Currently Streaming", shows: viewModel.currentlyStreaming)
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
@@ -124,7 +126,9 @@ struct TVShowsHomeView: View {
             TVSectionHeader(
                 title: "Airing Today",
                 subtitle: "Stay up to date"
-            )
+            ) {
+                TVShowGridView(title: "Airing Today", shows: viewModel.airingToday)
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
@@ -152,7 +156,9 @@ struct TVShowsHomeView: View {
             TVSectionHeader(
                 title: "Popular Shows",
                 subtitle: "Popular and trending shows"
-            )
+            ) {
+                TVShowGridView(title: "Popular Shows", shows: viewModel.popularShows)
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
@@ -180,7 +186,9 @@ struct TVShowsHomeView: View {
             TVSectionHeader(
                 title: "Coming Soon",
                 subtitle: "New and upcoming shows"
-            )
+            ) {
+                TVShowGridView(title: "Coming Soon", shows: viewModel.comingSoon)
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
@@ -205,7 +213,7 @@ struct TVShowsHomeView: View {
     // MARK: - Networks
     private var networksSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            TVSectionHeader(
+            SimpleTVSectionHeader(
                 title: "Networks",
                 subtitle: "Available watch providers"
             )
@@ -224,7 +232,7 @@ struct TVShowsHomeView: View {
     // MARK: - Genres
     private var genresSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            TVSectionHeader(
+            SimpleTVSectionHeader(
                 title: "Genres",
                 subtitle: "Shows by genre",
                 showChevron: false
@@ -434,39 +442,90 @@ struct TVGenreButton: View {
 }
 
 // MARK: - TV Section Header
-struct TVSectionHeader: View {
+struct TVSectionHeader<Destination: View>: View {
     let title: String
     let subtitle: String
     var showChevron: Bool = true
-    var action: (() -> Void)? = nil
+    var destination: (() -> Destination)?
+    
+    init(title: String, subtitle: String, showChevron: Bool = true, @ViewBuilder destination: @escaping () -> Destination) {
+        self.title = title
+        self.subtitle = subtitle
+        self.showChevron = showChevron
+        self.destination = destination
+    }
     
     var body: some View {
-        Button(action: { action?() }) {
-            HStack(alignment: .center) {
-                VStack(alignment: .leading, spacing: 2) {
-                    HStack(spacing: 6) {
-                        Text(title)
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.primary)
-                        
-                        if showChevron {
-                            Image(systemName: "chevron.right")
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    
-                    Text(subtitle)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+        Group {
+            if let destination = destination, showChevron {
+                NavigationLink(destination: destination()) {
+                    headerContent
                 }
-                
-                Spacer()
+                .buttonStyle(.plain)
+            } else {
+                headerContent
             }
         }
-        .buttonStyle(.plain)
+        .padding(.horizontal)
+    }
+    
+    private var headerContent: some View {
+        HStack(alignment: .center) {
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(spacing: 6) {
+                    Text(title)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                    
+                    if showChevron {
+                        Image(systemName: "chevron.right")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
+                Text(subtitle)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+        }
+    }
+}
+
+// MARK: - Simple TV Section Header
+struct SimpleTVSectionHeader: View {
+    let title: String
+    let subtitle: String
+    var showChevron: Bool = false
+    
+    var body: some View {
+        HStack(alignment: .center) {
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(spacing: 6) {
+                    Text(title)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                    
+                    if showChevron {
+                        Image(systemName: "chevron.right")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
+                Text(subtitle)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+        }
         .padding(.horizontal)
     }
 }

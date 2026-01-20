@@ -34,7 +34,6 @@ struct MainTabView: View {
                 SearchView()
             }
         }
-        .tabBarMinimizeBehavior(.onScrollDown)
         .tint(.primary)
     }
 }

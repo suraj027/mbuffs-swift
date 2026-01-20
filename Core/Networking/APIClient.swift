@@ -7,12 +7,27 @@
 
 import Foundation
 
-enum APIError: Error {
+enum APIError: Error, LocalizedError {
     case invalidURL
     case requestFailed(Error)
     case invalidResponse
     case decodingFailed(Error)
     case serverError(Int)
+    
+    var errorDescription: String? {
+        switch self {
+        case .invalidURL:
+            return "Invalid URL"
+        case .requestFailed(let error):
+            return "Request failed: \(error.localizedDescription)"
+        case .invalidResponse:
+            return "Invalid response from server"
+        case .decodingFailed(let error):
+            return "Failed to decode response: \(error.localizedDescription)"
+        case .serverError(let code):
+            return "Server error with code: \(code)"
+        }
+    }
 }
 
 protocol APIClientProtocol {
@@ -23,18 +38,19 @@ class APIClient: APIClientProtocol {
     static let shared = APIClient()
     private let session: URLSession
     
-    // TODO: Replace with actual Base URL (e.g., https://api.themoviedb.org/3 or http://localhost:3000)
-    private let baseURL = "https://api.themoviedb.org/3" 
-    private let apiKey = "YOUR_TMDB_API_KEY" // Placeholder
+    // Custom TMDB API Server
+    private let baseURL = "https://tmdb-api-rouge.vercel.app"
 
     init(session: URLSession = .shared) {
         self.session = session
     }
 
     func fetch<T: Decodable>(_ endpoint: Endpoint) async throws -> T {
-        guard let url = endpoint.url(baseURL: baseURL, apiKey: apiKey) else {
+        guard let url = endpoint.url(baseURL: baseURL) else {
             throw APIError.invalidURL
         }
+        
+        print("🌐 Fetching: \(url.absoluteString)")
 
         let (data, response) = try await session.data(from: url)
 
@@ -51,6 +67,7 @@ class APIClient: APIClientProtocol {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             return try decoder.decode(T.self, from: data)
         } catch {
+            print("❌ Decoding error: \(error)")
             throw APIError.decodingFailed(error)
         }
     }

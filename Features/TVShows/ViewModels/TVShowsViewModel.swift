@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-// MARK: - TV Genre Model
+// MARK: - TV Genre Model (for UI display with colors)
 struct TVGenre: Identifiable, Hashable {
     let id: Int
     let name: String
@@ -40,33 +40,29 @@ struct TVGenre: Identifiable, Hashable {
 
 @MainActor
 class TVShowsViewModel: ObservableObject {
+    // MARK: - Published Properties
     @Published var currentlyStreaming: [TVShow] = []
-    @Published var airingToday: [TVShow] = []
     @Published var popularShows: [TVShow] = []
     @Published var comingSoon: [TVShow] = []
     @Published var networks: [StreamingNetwork] = []
     @Published var genres: [TVGenre] = []
+    
     @Published var isLoading = false
+    @Published var isLoadingStreaming = false
+    @Published var isLoadingPopular = false
+    @Published var isLoadingComingSoon = false
+    
     @Published var errorMessage: String?
 
-    private let apiClient: APIClientProtocol
+    private let tvShowService: TVShowService
 
-    init(apiClient: APIClientProtocol? = nil) {
-        self.apiClient = apiClient ?? APIClient.shared
+    init(tvShowService: TVShowService = TVShowService.shared) {
+        self.tvShowService = tvShowService
+        setupStaticData()
     }
-
-    func fetchAllData() async {
-        isLoading = true
-        errorMessage = nil
-        
-        // TODO: Implement real API calls to TMDB or similar service
-        // For now, initialize with empty arrays - replace with actual API integration
-        
-        self.currentlyStreaming = []
-        self.airingToday = []
-        self.popularShows = []
-        self.comingSoon = []
-        
+    
+    // MARK: - Static Data Setup
+    private func setupStaticData() {
         // Networks (static data - these don't change often)
         self.networks = [
             StreamingNetwork(id: 1, name: "Netflix", logoPath: "/pbpMk2JmcoNnQwx5JGpXngfoWtp.png"),
@@ -98,12 +94,79 @@ class TVShowsViewModel: ObservableObject {
             TVGenre(id: 10768, name: "War", color: .cyan),
             TVGenre(id: 37, name: "Western", color: .brown)
         ]
+    }
+    
+    // MARK: - Fetch All Data
+    func fetchAllData() async {
+        isLoading = true
+        errorMessage = nil
+        
+        // Fetch all sections concurrently
+        async let streamingTask: () = fetchStreamingTVShows()
+        async let popularTask: () = fetchPopularTVShows()
+        async let comingSoonTask: () = fetchOnTheAirTVShows()
+        
+        // Wait for all tasks to complete
+        _ = await (streamingTask, popularTask, comingSoonTask)
         
         isLoading = false
     }
     
-    // Keep for backward compatibility
+    // MARK: - Currently Streaming
+    func fetchStreamingTVShows(page: Int = 1) async {
+        isLoadingStreaming = true
+        
+        do {
+            let response = try await tvShowService.getStreamingTVShows(page: page)
+            self.currentlyStreaming = response.results
+            print("✅ Fetched \(response.results.count) streaming TV shows")
+        } catch {
+            print("❌ Failed to fetch streaming TV shows: \(error)")
+            self.errorMessage = "Failed to load streaming TV shows"
+        }
+        
+        isLoadingStreaming = false
+    }
+    
+    // MARK: - Popular Shows
+    func fetchPopularTVShows(page: Int = 1) async {
+        isLoadingPopular = true
+        
+        do {
+            let response = try await tvShowService.getPopularTVShows(page: page)
+            self.popularShows = response.results
+            print("✅ Fetched \(response.results.count) popular TV shows")
+        } catch {
+            print("❌ Failed to fetch popular TV shows: \(error)")
+            self.errorMessage = "Failed to load popular TV shows"
+        }
+        
+        isLoadingPopular = false
+    }
+    
+    // MARK: - Coming Soon / On The Air
+    func fetchOnTheAirTVShows(page: Int = 1) async {
+        isLoadingComingSoon = true
+        
+        do {
+            let response = try await tvShowService.getOnTheAirTVShows(page: page)
+            self.comingSoon = response.results
+            print("✅ Fetched \(response.results.count) on-the-air TV shows")
+        } catch {
+            print("❌ Failed to fetch on-the-air TV shows: \(error)")
+            self.errorMessage = "Failed to load coming soon TV shows"
+        }
+        
+        isLoadingComingSoon = false
+    }
+    
+    // MARK: - Backward Compatibility
     func fetchPopularShows() async {
+        await fetchAllData()
+    }
+    
+    // MARK: - Retry
+    func retry() async {
         await fetchAllData()
     }
 }

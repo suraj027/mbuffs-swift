@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-// MARK: - Genre Model
+// MARK: - Genre Model (for UI display with colors)
 struct Genre: Identifiable, Hashable {
     let id: Int
     let name: String
@@ -52,33 +52,33 @@ struct StreamingNetwork: Identifiable, Hashable {
 
 @MainActor
 class MoviesViewModel: ObservableObject {
+    // MARK: - Published Properties
     @Published var theatricalReleases: [Movie] = []
     @Published var currentlyStreaming: [Movie] = []
     @Published var comingSoon: [Movie] = []
     @Published var explore: [Movie] = []
+    @Published var comedyMovies: [Movie] = []
+    @Published var horrorMovies: [Movie] = []
     @Published var networks: [StreamingNetwork] = []
     @Published var genres: [Genre] = []
+    
     @Published var isLoading = false
+    @Published var isLoadingTheatrical = false
+    @Published var isLoadingStreaming = false
+    @Published var isLoadingUpcoming = false
+    @Published var isLoadingExplore = false
+    
     @Published var errorMessage: String?
 
-    private let apiClient: APIClientProtocol
+    private let movieService: MovieService
 
-    init(apiClient: APIClientProtocol? = nil) {
-        self.apiClient = apiClient ?? APIClient.shared
+    init(movieService: MovieService = MovieService.shared) {
+        self.movieService = movieService
+        setupStaticData()
     }
-
-    func fetchAllData() async {
-        isLoading = true
-        errorMessage = nil
-        
-        // TODO: Implement real API calls to TMDB or similar service
-        // For now, initialize with empty arrays - replace with actual API integration
-        
-        self.theatricalReleases = []
-        self.currentlyStreaming = []
-        self.comingSoon = []
-        self.explore = []
-        
+    
+    // MARK: - Static Data Setup
+    private func setupStaticData() {
         // Networks (static data - these don't change often)
         self.networks = [
             StreamingNetwork(id: 1, name: "Netflix", logoPath: "/pbpMk2JmcoNnQwx5JGpXngfoWtp.png"),
@@ -112,16 +112,122 @@ class MoviesViewModel: ObservableObject {
             Genre(id: 10752, name: "War", color: .cyan),
             Genre(id: 37, name: "Western", color: .brown)
         ]
+    }
+    
+    // MARK: - Fetch All Data
+    func fetchAllData() async {
+        isLoading = true
+        errorMessage = nil
+        
+        // Fetch all sections concurrently
+        async let theatricalTask: () = fetchTheatricalReleases()
+        async let streamingTask: () = fetchStreamingMovies()
+        async let upcomingTask: () = fetchUpcomingMovies()
+        async let exploreTask: () = fetchExploreMovies()
+        
+        // Wait for all tasks to complete
+        _ = await (theatricalTask, streamingTask, upcomingTask, exploreTask)
         
         isLoading = false
     }
     
-    // Keep for backward compatibility
+    // MARK: - Theatrical Releases
+    func fetchTheatricalReleases(page: Int = 1) async {
+        isLoadingTheatrical = true
+        
+        do {
+            let response = try await movieService.getTheatricalMovies(page: page)
+            self.theatricalReleases = response.results
+            print("✅ Fetched \(response.results.count) theatrical movies")
+        } catch {
+            print("❌ Failed to fetch theatrical movies: \(error)")
+            self.errorMessage = "Failed to load theatrical releases"
+        }
+        
+        isLoadingTheatrical = false
+    }
+    
+    // MARK: - Currently Streaming
+    func fetchStreamingMovies(page: Int = 1) async {
+        isLoadingStreaming = true
+        
+        do {
+            let response = try await movieService.getStreamingMovies(page: page)
+            self.currentlyStreaming = response.results
+            print("✅ Fetched \(response.results.count) streaming movies")
+        } catch {
+            print("❌ Failed to fetch streaming movies: \(error)")
+            self.errorMessage = "Failed to load streaming movies"
+        }
+        
+        isLoadingStreaming = false
+    }
+    
+    // MARK: - Coming Soon
+    func fetchUpcomingMovies(page: Int = 1) async {
+        isLoadingUpcoming = true
+        
+        do {
+            let response = try await movieService.getUpcomingMovies(page: page)
+            self.comingSoon = response.results
+            print("✅ Fetched \(response.results.count) upcoming movies")
+        } catch {
+            print("❌ Failed to fetch upcoming movies: \(error)")
+            self.errorMessage = "Failed to load upcoming movies"
+        }
+        
+        isLoadingUpcoming = false
+    }
+    
+    // MARK: - Explore Movies
+    func fetchExploreMovies(sortBy: String? = "popularity.desc", genres: String? = nil, year: Int? = nil, page: Int = 1) async {
+        isLoadingExplore = true
+        
+        do {
+            let response = try await movieService.exploreMovies(sortBy: sortBy, genres: genres, year: year, page: page)
+            self.explore = response.results
+            print("✅ Fetched \(response.results.count) explore movies")
+        } catch {
+            print("❌ Failed to fetch explore movies: \(error)")
+            self.errorMessage = "Failed to load explore movies"
+        }
+        
+        isLoadingExplore = false
+    }
+    
+    // MARK: - Comedy Movies
+    func fetchComedyMovies(page: Int = 1) async {
+        do {
+            let response = try await movieService.getComedyMovies(page: page)
+            self.comedyMovies = response.results
+            print("✅ Fetched \(response.results.count) comedy movies")
+        } catch {
+            print("❌ Failed to fetch comedy movies: \(error)")
+        }
+    }
+    
+    // MARK: - Horror Movies
+    func fetchHorrorMovies(page: Int = 1) async {
+        do {
+            let response = try await movieService.getHorrorMovies(page: page)
+            self.horrorMovies = response.results
+            print("✅ Fetched \(response.results.count) horror movies")
+        } catch {
+            print("❌ Failed to fetch horror movies: \(error)")
+        }
+    }
+    
+    // MARK: - Backward Compatibility
     var popularMovies: [Movie] {
         theatricalReleases + currentlyStreaming
     }
     
     func fetchPopularMovies() async {
+        await fetchAllData()
+    }
+    
+    // MARK: - Retry
+    func retry() async {
         await fetchAllData()
     }
 }

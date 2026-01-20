@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16DBD7052F1770E300A1D378 /* TVShowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DBD7062F1770E300A1D378 /* TVShowService.swift */; };
+		16DBD7032F1770E300A1D378 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DBD7042F1770E300A1D378 /* MovieService.swift */; };
 		16DBD7002F1770E300A1D378 /* MovieGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DBD6FF2F1770E300A1D378 /* MovieGridView.swift */; };
 		16DBD7022F1770E300A1D378 /* TVShowGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DBD7012F1770E300A1D378 /* TVShowGridView.swift */; };
 		16DBD6F42F1770E300A1D378 /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DBD6E52F1770E300A1D378 /* MovieDetailsView.swift */; };
@@ -58,6 +60,8 @@
 		16DBD9982F1770E300A1D378 /* TVShowDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetailsView.swift; sourceTree = "<group>"; };
 		16DBD6FF2F1770E300A1D378 /* MovieGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGridView.swift; sourceTree = "<group>"; };
 		16DBD7012F1770E300A1D378 /* TVShowGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowGridView.swift; sourceTree = "<group>"; };
+		16DBD7042F1770E300A1D378 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
+		16DBD7062F1770E300A1D378 /* TVShowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -146,6 +150,8 @@
 			children = (
 				16DBD6DE2F1770E300A1D378 /* APIClient.swift */,
 				16DBD6DF2F1770E300A1D378 /* Endpoint.swift */,
+				16DBD7042F1770E300A1D378 /* MovieService.swift */,
+				16DBD7062F1770E300A1D378 /* TVShowService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -415,6 +421,8 @@
 				16DBD9992F1770E300A1D378 /* TVShowDetailsView.swift in Sources */,
 				16DBD7002F1770E300A1D378 /* MovieGridView.swift in Sources */,
 				16DBD7022F1770E300A1D378 /* TVShowGridView.swift in Sources */,
+				16DBD7032F1770E300A1D378 /* MovieService.swift in Sources */,
+				16DBD7052F1770E300A1D378 /* TVShowService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

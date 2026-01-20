@@ -43,13 +43,10 @@ struct TVShowsHomeView: View {
                             // Currently Streaming Section (Large Cards)
                             currentlyStreamingSection
                             
-                            // Airing Today Section
-                            airingTodaySection
-                            
                             // Popular Shows Section
                             popularShowsSection
                             
-                            // Coming Soon Section
+                            // Coming Soon Section (On The Air)
                             comingSoonSection
                             
                             // Networks Section
@@ -110,36 +107,6 @@ struct TVShowsHomeView: View {
                         ForEach(viewModel.currentlyStreaming) { show in
                             NavigationLink(destination: TVShowDetailsView(show: show)) {
                                 LargeTVPosterCard(show: show)
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-                }
-                .padding(.horizontal)
-            }
-        }
-    }
-    
-    // MARK: - Airing Today
-    private var airingTodaySection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            TVSectionHeader(
-                title: "Airing Today",
-                subtitle: "Stay up to date"
-            ) {
-                TVShowGridView(title: "Airing Today", shows: viewModel.airingToday)
-            }
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
-                    if viewModel.airingToday.isEmpty {
-                        ForEach(0..<5, id: \.self) { _ in
-                            SkeletonMediumPosterCard()
-                        }
-                    } else {
-                        ForEach(viewModel.airingToday) { show in
-                            NavigationLink(destination: TVShowDetailsView(show: show)) {
-                                MediumTVPosterCard(show: show)
                             }
                             .buttonStyle(.plain)
                         }

@@ -53,6 +53,9 @@ class TVShowsViewModel: ObservableObject {
     @Published var isLoadingComingSoon = false
     
     @Published var errorMessage: String?
+    
+    // Track if data has been loaded to prevent re-fetching on tab switches
+    @Published var hasLoadedData = false
 
     private let tvShowService: TVShowService
 
@@ -110,6 +113,17 @@ class TVShowsViewModel: ObservableObject {
         _ = await (streamingTask, popularTask, comingSoonTask)
         
         isLoading = false
+        hasLoadedData = true
+    }
+    
+    // MARK: - Fetch All Data If Needed (prevents re-fetch on tab switches)
+    func fetchAllDataIfNeeded() async {
+        // Only fetch if we haven't loaded data yet
+        guard !hasLoadedData else {
+            print("📦 Using cached TV show data")
+            return
+        }
+        await fetchAllData()
     }
     
     // MARK: - Currently Streaming

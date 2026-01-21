@@ -10,6 +10,10 @@ import SwiftUI
 struct MainTabView: View {
     @State private var selectedTab = 1 // Start on Movies
     
+    // Persist ViewModels at parent level to prevent re-fetching on tab switches
+    @StateObject private var moviesViewModel = MoviesViewModel()
+    @StateObject private var tvShowsViewModel = TVShowsViewModel()
+    
     var body: some View {
         TabView(selection: $selectedTab) {
             // Main navigation tabs
@@ -18,11 +22,11 @@ struct MainTabView: View {
             }
             
             Tab("Movies", systemImage: "film.stack", value: 1) {
-                MoviesHomeView()
+                MoviesHomeView(viewModel: moviesViewModel)
             }
             
             Tab("Shows", systemImage: "play.rectangle.fill", value: 2) {
-                TVShowsHomeView()
+                TVShowsHomeView(viewModel: tvShowsViewModel)
             }
             
             Tab("Library", systemImage: "books.vertical", value: 3) {
@@ -123,5 +127,3 @@ struct SearchView: View {
 #Preview {
     MainTabView()
 }
-
-

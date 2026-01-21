@@ -16,7 +16,8 @@ struct ScrollOffsetPreferenceKey: PreferenceKey {
 }
 
 struct MoviesHomeView: View {
-    @StateObject private var viewModel = MoviesViewModel()
+    // Accept ViewModel from parent to persist data across tab switches
+    @ObservedObject var viewModel: MoviesViewModel
     @State private var scrollOffset: CGFloat = 0
     
     private let collapsedThreshold: CGFloat = 50
@@ -25,14 +26,19 @@ struct MoviesHomeView: View {
         scrollOffset > collapsedThreshold
     }
     
+    // Initializer that receives ViewModel from parent
+    init(viewModel: MoviesViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
         NavigationStack {
             ZStack(alignment: .top) {
                 // Main scrollable content
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 28) {
-                        if viewModel.isLoading {
-                            // Skeleton Loading State
+                        if viewModel.isLoading && !viewModel.hasLoadedData {
+                            // Skeleton Loading State (only show on first load)
                             SkeletonLargeCardsSection()
                             SkeletonMediumCardsSection()
                             SkeletonMediumCardsSection()
@@ -85,7 +91,8 @@ struct MoviesHomeView: View {
             }
             .navigationBarHidden(true)
             .task {
-                await viewModel.fetchAllData()
+                // Only fetch if data hasn't been loaded yet
+                await viewModel.fetchAllDataIfNeeded()
             }
         }
     }
@@ -571,5 +578,5 @@ extension View {
 
 // MARK: - Preview
 #Preview {
-    MoviesHomeView()
+    MoviesHomeView(viewModel: MoviesViewModel())
 }

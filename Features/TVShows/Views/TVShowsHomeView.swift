@@ -16,7 +16,8 @@ struct TVScrollOffsetPreferenceKey: PreferenceKey {
 }
 
 struct TVShowsHomeView: View {
-    @StateObject private var viewModel = TVShowsViewModel()
+    // Accept ViewModel from parent to persist data across tab switches
+    @ObservedObject var viewModel: TVShowsViewModel
     @State private var scrollOffset: CGFloat = 0
     
     private let collapsedThreshold: CGFloat = 50
@@ -25,14 +26,19 @@ struct TVShowsHomeView: View {
         scrollOffset > collapsedThreshold
     }
     
+    // Initializer that receives ViewModel from parent
+    init(viewModel: TVShowsViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
         NavigationStack {
             ZStack(alignment: .top) {
                 // Main scrollable content
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 28) {
-                        if viewModel.isLoading {
-                            // Skeleton Loading State
+                        if viewModel.isLoading && !viewModel.hasLoadedData {
+                            // Skeleton Loading State (only show on first load)
                             SkeletonLargeCardsSection()
                             SkeletonMediumCardsSection()
                             SkeletonMediumCardsSection()
@@ -82,7 +88,8 @@ struct TVShowsHomeView: View {
             }
             .navigationBarHidden(true)
             .task {
-                await viewModel.fetchAllData()
+                // Only fetch if data hasn't been loaded yet
+                await viewModel.fetchAllDataIfNeeded()
             }
         }
     }
@@ -730,5 +737,5 @@ struct SkeletonGenresSection: View {
 
 // MARK: - Preview
 #Preview {
-    TVShowsHomeView()
+    TVShowsHomeView(viewModel: TVShowsViewModel())
 }

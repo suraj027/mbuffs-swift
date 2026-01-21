@@ -69,6 +69,9 @@ class MoviesViewModel: ObservableObject {
     @Published var isLoadingExplore = false
     
     @Published var errorMessage: String?
+    
+    // Track if data has been loaded to prevent re-fetching on tab switches
+    @Published var hasLoadedData = false
 
     private let movieService: MovieService
 
@@ -129,6 +132,17 @@ class MoviesViewModel: ObservableObject {
         _ = await (theatricalTask, streamingTask, upcomingTask, exploreTask)
         
         isLoading = false
+        hasLoadedData = true
+    }
+    
+    // MARK: - Fetch All Data If Needed (prevents re-fetch on tab switches)
+    func fetchAllDataIfNeeded() async {
+        // Only fetch if we haven't loaded data yet
+        guard !hasLoadedData else {
+            print("📦 Using cached movie data")
+            return
+        }
+        await fetchAllData()
     }
     
     // MARK: - Theatrical Releases
